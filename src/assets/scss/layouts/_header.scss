@@ -1,6 +1,13 @@
+@import '../variables.scss';
+
+.header {
+  height: $header-height !important;
+}
+
 .logo-container {
     padding: 0 8rem;
     display: flex;
     row-gap: 1rem;
     justify-content: center;
+    align-items: center;
 }

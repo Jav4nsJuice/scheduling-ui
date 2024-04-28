@@ -7,6 +7,8 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { BrowserModule } from '@angular/platform-browser';
   imports: [
     CommonModule,
     AppRoutingModule,
-    BrowserModule
+    BrowserModule,
+    MatToolbarModule
   ],
   bootstrap: [AppComponent],
 })
