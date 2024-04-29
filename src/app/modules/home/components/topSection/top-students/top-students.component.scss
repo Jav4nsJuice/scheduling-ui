@@ -5,6 +5,7 @@
     height: calc(100% - 4rem);
     padding: 2rem;
     display: flex;
+    flex-direction: column;
 }
 
 .top-students-title {
@@ -21,4 +22,15 @@ p {
 
 .items-list{
     height: 100%;
+}
+
+.items-list-container {
+    padding: 0 1rem;
+    margin: 3rem 0 0 0;
+}
+
+.item-information {
+    display: flex;
+    width: 100%;
+    gap: 0.5rem;
 }

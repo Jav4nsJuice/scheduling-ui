@@ -5,6 +5,15 @@
         </p>
     </div>
     <div class="items-list">
-        
+        <ul class="items-list-container">
+            <div
+                class="font-size-08"
+                *ngFor="let student of students$ | async"
+                >
+                <div class="item-information">
+                    {{ student.firstName }} {{ student.lastName}}
+                </div>
+            </div>
+        </ul>
     </div>
 </div>
