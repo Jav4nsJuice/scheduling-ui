@@ -61,6 +61,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    background-color: $primary-800;
   }
   
   .vertical__line {
@@ -80,4 +81,31 @@
   
   .mdc-list-item:hover .mdc-list-item__primary-text {
     color: inherit !important;
+  }
+  .material-icons--18 {
+    font-family: "Material Icons";
+    font-weight: normal;
+    font-style: normal;
+    font-size: 18px;
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+    /* Support for IE. */
+    font-feature-settings: "liga";
+  }
+
+  .sidebar-item-container {
+    display: flex;
+    align-items: center;
+    letter-spacing: 0;
   }

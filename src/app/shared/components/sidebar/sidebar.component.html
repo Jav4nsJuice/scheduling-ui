@@ -3,7 +3,16 @@
         <mat-nav-list>
             <div ngClass="sidebar__items">
                 <div *ngFor="let menu of sidebarStructure$ | async" ngClass="sidebar__item">
-                
+                    <a mat-list-item
+                        ngClass="menu__item--active"
+                        (click)="updateSidebar(menu)"
+                        [routerLink]="menu.path"
+                        (mouseenter)="showSubmenu(menu)"
+                        (mouseleave)="hideSubmenu(menu)">
+                        <div class="sidebar-item-container">
+                            <span class="material-icons--18 outlined">{{ menu.icon }}</span>
+                        </div>
+                    </a>
                 </div>
             </div>
         </mat-nav-list>

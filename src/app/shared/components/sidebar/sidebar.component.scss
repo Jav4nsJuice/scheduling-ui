@@ -2,7 +2,7 @@
 
 .sidebar {
     height: calc(100% - 9rem);
-    background-color: $charcoal-900;
+    background-color: $charcoal-100;
 }
 
 .sidebar__close{
@@ -15,8 +15,44 @@
       color: $charcoal-50 !important;
     }
     color: $charcoal-50;
+    height: 6rem;
 }
 
 .mat-mdc-list-base {
   padding-top: unset;
+}
+
+.sidebar-item-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mat-mdc-list-item {
+  height: 5.5rem !important;
+  background-color: $primary-800;
+  font-weight: 700;
+  font-size: 1rem;
+
+  &.menu__item--active {
+    background-color: $primary-800;
+    color: $charcoal-50;
+  }
+
+  &.menu__item--sidebar--open {
+    background-color: $primary-800;
+    color: $charcoal-50;
+    box-shadow: 4px 4px 12px 0 rgba($primary-900, 0.2);
+  }
+
+  &:hover{
+    background-color: $primary-400;
+    color: $charcoal-50;
+  }
+
+  &.menu__item--selected {
+    background-color: $primary-400;
+    color: $charcoal-50 !important;
+    font-weight: 800;
+  }
 }
