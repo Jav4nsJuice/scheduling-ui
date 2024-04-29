@@ -13,6 +13,32 @@
                             <span class="material-icons--18 outlined">{{ menu.icon }}</span>
                         </div>
                     </a>
+                    <div [ngClass]="{
+                        'submenu--hover': submenuVisible[menu.label],
+                        'submenu--list': (menu.isExpanded ),
+                        'submenu': true}">
+                        <ng-container *ngFor="let submenu of menu.submenus">
+                            <a
+                              mat-list-item
+                              [ngClass]="{
+                                'menu__item--selected' : submenu.isActive,
+                                'menu__item--active' : menu.isExpanded,
+                              }"
+                              [routerLink]="submenu.path"
+                              (click)="updateSidebar(menu, submenu)"
+                            >
+                              <div
+                                [ngClass]="{
+                                  'font-size-02': true,
+                                  'sidebar__label' : true,
+                                  'sidebar__label--expanded' : menu.isExpanded
+                                }"
+                              >
+                                {{ submenu.label }}
+                              </div>
+                            </a>
+                          </ng-container>
+                    </div>
                 </div>
             </div>
         </mat-nav-list>
