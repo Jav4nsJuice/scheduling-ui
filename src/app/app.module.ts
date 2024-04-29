@@ -16,7 +16,8 @@ import { MatListModule } from '@angular/material/list';
 
 import { SchedulingStateModule } from './core/store/state/app.state';
 import { StoreModule } from '@ngrx/store';
-import { routerReducer } from '@ngrx/router-store';
+import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
+import { RouterSerializer } from './core/store/state/routerSerializer';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,9 @@ import { routerReducer } from '@ngrx/router-store';
     SchedulingStateModule,
     StoreModule.forRoot({
       router: routerReducer,
+    }),
+    StoreRouterConnectingModule.forRoot({
+      serializer: RouterSerializer,
     }),
   ],
   bootstrap: [AppComponent],
