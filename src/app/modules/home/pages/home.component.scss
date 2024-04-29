@@ -10,13 +10,32 @@
         padding: 0 2rem;
         height: 50%;
         width: calc(100% - 4rem);
-        background-color: black;
     }
 
     &__top-section {
         padding: 0 2rem;
         height: 50%;
         width: calc(100% - 4rem);
-        background-color: black;
+        display: flex;
+        gap: 4rem;
     }
+}
+
+.slider-section {
+    margin-bottom: 4rem;
+    padding: 1rem 3rem 0rem 3rem;
+    background-color: black;
+    height: calc(100% - 1rem);
+}
+
+.top-students-section {
+    width: calc(50% - 8rem);
+    padding: 1rem 0 1rem 8rem;
+    background-color: black;
+}
+
+.top-courses-section {
+    width: calc(50% - 8rem);
+    padding: 1rem 8rem 1rem 0;
+    background-color: black;
 }
