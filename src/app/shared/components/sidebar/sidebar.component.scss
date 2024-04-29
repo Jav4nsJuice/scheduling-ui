@@ -1,0 +1,10 @@
+@import '../../../../assets/scss/variables.scss';
+
+.sidebar {
+    height: calc(100% - 9rem);
+    background-color: $charcoal-100;
+}
+
+.sidebar__close{
+    min-width: 4rem;
+}

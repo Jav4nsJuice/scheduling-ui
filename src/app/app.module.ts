@@ -10,7 +10,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
-
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { SidebarComponent } from './shared/components/sidebar/sidebar.component'
     CommonModule,
     AppRoutingModule,
     BrowserModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSidenavModule,
+    BrowserAnimationsModule
   ],
   bootstrap: [AppComponent],
 })
