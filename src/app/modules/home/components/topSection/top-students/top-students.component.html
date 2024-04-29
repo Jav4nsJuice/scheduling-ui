@@ -7,12 +7,14 @@
     <div class="items-list">
         <ul class="items-list-container">
             <div
-                class="font-size-08"
-                *ngFor="let student of students$ | async"
-                >
-                <div class="item-information">
+                class="font-size-08 item-information-container"
+                *ngFor="let student of students$ | async">
+                <div>
                     {{ student.firstName }} {{ student.lastName}}
                 </div>
+                <p class="font-size-07 counter-color">
+                    {{ getCourseCount(student.id) | async }}
+                </p>
             </div>
         </ul>
     </div>

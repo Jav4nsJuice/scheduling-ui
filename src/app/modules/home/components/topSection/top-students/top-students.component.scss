@@ -22,6 +22,7 @@ p {
 
 .items-list{
     height: 100%;
+    background-color: $charcoal-200;
 }
 
 .items-list-container {
@@ -29,8 +30,14 @@ p {
     margin: 3rem 0 0 0;
 }
 
-.item-information {
+.item-information-container {
     display: flex;
-    width: 100%;
-    gap: 0.5rem;
+    justify-content: space-between;
+}
+
+.counter-color {
+    color: $primary-900;
+    min-width: 2.5rem;
+    text-align: center;
+
 }
