@@ -1,5 +1,11 @@
 <mat-drawer-container autosize [hasBackdrop]="false" class="sidebar">
     <mat-drawer #drawer mode="side" disableClose="true" opened="true" ngClass="sidebar__close">
-    
+        <mat-nav-list>
+            <div ngClass="sidebar__items">
+                <div *ngFor="let menu of sidebarStructure$ | async" ngClass="sidebar__item">
+                
+                </div>
+            </div>
+        </mat-nav-list>
     </mat-drawer>
 </mat-drawer-container>

@@ -12,6 +12,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatListModule } from '@angular/material/list';
+
+import { SchedulingStateModule } from './core/store/state/app.state';
+import { StoreModule } from '@ngrx/store';
+import { routerReducer } from '@ngrx/router-store';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     MatToolbarModule,
     MatSidenavModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatListModule,
+    SchedulingStateModule,
+    StoreModule.forRoot({
+      router: routerReducer,
+    }),
   ],
   bootstrap: [AppComponent],
 })

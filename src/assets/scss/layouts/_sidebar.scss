@@ -1,3 +1,83 @@
 .mat-drawer-side {
     border: none !important;
+}
+
+.sidebar__items {
+    flex: 1;
+}
+
+.sidebar__item {
+    position: relative;
+    &:hover .submenu--hover {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        transform: translate3d(34px, -44px ,0);
+    }
+}
+
+.mat-drawer-inner-container {
+    overflow: unset !important;
+}
+
+.mdc-list-item {
+    height: 5.5rem !important;
+    padding: 0 !important;
+}
+
+// .mdc-list-item__primary-text{
+//     font-family: $tx-font-family-primary !important;
+// }
+
+.mat-drawer {
+    overflow-y: unset !important;
+    box-sizing: unset !important;
+}
+
+.sidebar__container {
+    min-width: 8rem !important;
+}
+  
+.sidebar__content {
+    height: 100%;
+}
+
+.sidebar__label {
+    overflow: hidden;
+    white-space: nowrap;
+    padding-right: 2rem;
+    margin-left: 1.5rem;
+}
+
+.submenu {
+    display: none;
+  }
+  
+  .submenu--list {
+    display: none;
+  }
+  
+  .mat-mdc-nav-list.mat-mdc-list-base {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .vertical__line {
+    height: 5rem;
+    margin-left: 0.8px;
+    margin-right: 6px;
+  }
+  
+  .outlined {
+    font-family: "Material Icons Outlined";
+  }
+  
+  
+  .mat-mdc-list-item-unscoped-content.mdc-list-item__primary-text {
+    color: inherit;
+  }
+  
+  .mdc-list-item:hover .mdc-list-item__primary-text {
+    color: inherit !important;
   }
