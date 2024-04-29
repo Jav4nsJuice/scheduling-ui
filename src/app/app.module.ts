@@ -9,11 +9,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    SidebarComponent,
   ],
   imports: [
     CommonModule,
