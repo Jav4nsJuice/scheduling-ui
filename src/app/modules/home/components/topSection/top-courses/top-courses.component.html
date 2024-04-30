@@ -1,1 +1,21 @@
-<p>top-courses works!</p>
+<div class="top-courses-container">
+    <div class="top-courses-title">
+        <p class="font-size-10">
+            TOP COURSES
+        </p>
+    </div>
+    <div class="items-list">
+        <ul class="items-list-container">
+            <div
+                class="font-size-08 item-information-container"
+                *ngFor="let course of courses$ | async">
+                <div>
+                    {{ course.title }}
+                </div>
+                <p class="font-size-07 counter-color">
+                    {{ getStudentCount(course.id) | async }}
+                </p>
+            </div>
+        </ul>
+    </div>
+</div>
