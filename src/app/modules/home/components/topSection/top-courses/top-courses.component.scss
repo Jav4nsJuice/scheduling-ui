@@ -33,11 +33,11 @@ p {
 .item-information-container {
     display: flex;
     justify-content: space-between;
+    margin-top: 1rem;
 }
 
 .counter-color {
     color: $primary-900;
     min-width: 2.5rem;
     text-align: center;
-
 }

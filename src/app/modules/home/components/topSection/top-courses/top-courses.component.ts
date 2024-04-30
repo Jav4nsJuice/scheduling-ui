@@ -15,7 +15,7 @@ import { getCourses } from 'src/app/core/store/actions/course.action';
 })
 export class TopCoursesComponent implements OnInit {
   courses$: Observable<Course[]> = this.store.select(selectAllCourses);
-  CourseStudentCounts$: Observable<{ courseId: string, studentCount: number }[]>;
+  topCourses$: Observable<Course[]>;
 
   constructor(private store: Store<State<CoursesState>>) {}
 
@@ -31,6 +31,18 @@ export class TopCoursesComponent implements OnInit {
         this.store.dispatch(getCourseStudents({ courseId: course.id }));
       });
     });
+
+    this.topCourses$ = this.courses$.pipe(
+      map(courses => this.calculateTopCourses(courses))
+    );
+  }
+
+  calculateTopCourses(courses: Course[]): Course[] {
+    return courses.slice().sort((a, b) => {
+      const countA = Number(this.getStudentCount(a.id));
+      const countB = Number(this.getStudentCount(b.id));
+      return countB - countA;
+    }).slice(0, 5);
   }
 
   getStudentCount(courseId: string): Observable<number> {
