@@ -6,16 +6,16 @@
     </div>
     <div class="items-list">
         <ul class="items-list-container">
-            <div
-                class="font-size-08 item-information-container"
-                *ngFor="let course of topCourses$ | async">
-                <div>
-                    {{ course.title }}
+            <ng-container *ngIf="(studentCourses$ | async) as studentCourses">
+                <div class="font-size-08 item-information-container" *ngFor="let course of getTopCourses(courses$ | async, studentCourses)">
+                    <div>
+                        {{ course.title }}
+                    </div>
+                    <p class="font-size-07 counter-color">
+                        {{ getStudentCount(course, studentCourses) }}
+                    </p>
                 </div>
-                <p class="font-size-07 counter-color">
-                    {{ getStudentCount(course.id) | async }}
-                </p>
-            </div>
+            </ng-container>
         </ul>
     </div>
 </div>

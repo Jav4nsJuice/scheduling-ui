@@ -7,6 +7,8 @@ import { selectAllStudentCourses } from 'src/app/core/store/selectors/student.se
 import { Course } from 'src/app/shared/models/course.model';
 import { CoursesState } from 'src/app/core/store/reducers/course.reducer';
 import { getCourses } from 'src/app/core/store/actions/course.action';
+import { StudentCourse } from 'src/app/shared/models/student.model';
+import { StudentsState } from 'src/app/core/store/reducers/student.reducer';
 
 @Component({
   selector: 'app-top-courses',
@@ -14,40 +16,30 @@ import { getCourses } from 'src/app/core/store/actions/course.action';
   styleUrl: './top-courses.component.scss'
 })
 export class TopCoursesComponent implements OnInit {
-  courses$: Observable<Course[]> = this.store.select(selectAllCourses);
-  topCourses$: Observable<Course[]>;
+  courses$: Observable<Course[]> = this.storeCourse.select(selectAllCourses);
+  studentCourses$: Observable<StudentCourse[]> = this.storeStudent.select(selectAllStudentCourses);
 
-  constructor(private store: Store<State<CoursesState>>) {}
+  constructor(private storeCourse: Store<State<CoursesState>>, private storeStudent: Store<State<StudentsState>>) {}
 
   ngOnInit(): void {
-    this.loadCoursesAndStudents();
+    this.loadCourses();
   }
 
-  private loadCoursesAndStudents(): void {
-    this.store.dispatch(getCourses());
-  
-    this.courses$.subscribe(courses => {
-      courses.forEach(course => {
-        // this.store.dispatch(getStudentCourses());
-      });
-    });
-
-    this.topCourses$ = this.courses$.pipe(
-      map(courses => this.calculateTopCourses(courses))
-    );
+  private loadCourses(): void {
+    this.storeCourse.dispatch(getCourses());
+    this.storeStudent.dispatch(getStudentCourses());
   }
 
-  calculateTopCourses(courses: Course[]): Course[] {
-    return courses.slice().sort((a, b) => {
-      const countA = Number(this.getStudentCount(a.id));
-      const countB = Number(this.getStudentCount(b.id));
-      return countB - countA;
+  getStudentCount(course: Course, studentCourses: StudentCourse[]): number {
+    if (!studentCourses || !course) return 0;
+    return studentCourses.filter(student => student.courseId === course.id).length;
+  }
+
+  getTopCourses(courses: Course[], studentCourses: StudentCourse[]): Course[] {
+    return courses.slice(0).sort((a, b) => {
+      const studentCountA = this.getStudentCount(a, studentCourses);
+      const studentCountB = this.getStudentCount(b, studentCourses);
+      return studentCountB - studentCountA;
     }).slice(0, 5);
-  }
-
-  getStudentCount(courseId: string): Observable<number> {
-    return this.store.select(selectAllStudentCourses).pipe(
-      map(students => students.filter(student => student.courseId === courseId).length)
-    );
   }
 }

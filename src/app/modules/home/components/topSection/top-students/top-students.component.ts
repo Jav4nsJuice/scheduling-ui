@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { State, Store } from '@ngrx/store';
-import { Observable, map, switchMap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { StudentsState } from 'src/app/core/store/reducers/student.reducer';
 import { Student, StudentCourse } from 'src/app/shared/models/student.model';
 import { getStudentCourses, getStudents } from '../../../../../core/store/actions/student.action';
@@ -20,8 +20,6 @@ export class TopStudentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadStudents();
-    this.students$.subscribe(students => console.log('Students:', students));
-    this.studentCourses$.subscribe(courses => console.log('Student Courses:', courses));
   }
 
   private loadStudents(): void {
@@ -30,7 +28,6 @@ export class TopStudentsComponent implements OnInit {
   }
 
   getCourseCount(student: Student, studentCourses: StudentCourse[]): number {
-    console.log("Hi");
     if (!studentCourses || !student) return 0;
     return studentCourses.filter(course => course.studentId === student.id).length;
   }
