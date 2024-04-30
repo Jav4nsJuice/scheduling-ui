@@ -10,9 +10,9 @@ export const sidebarStructure = [
           submenus: [],
         },
         {
-          id: 'side-bar-information-page',
-          label: 'Information',
-          path: '/information',
+          id: 'side-bar-table-page',
+          label: 'Table',
+          path: '/table',
           icon: 'group',
           isExpanded: false,
           submenus: [],
