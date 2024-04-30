@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Menu, SubMenu } from '../../models/menu.model';
 import { SidebarState } from '../../../core/store/reducers/sidebar.reducer';
 import { State, Store } from '@ngrx/store';
-import { selectCurrentStructure } from 'src/app/core/store/selectors/sidebar.selector';
+import { selectCurrentStructure, selectSidebarExpandState } from 'src/app/core/store/selectors/sidebar.selector';
 import * as SidebarActions from '../../../core/store/actions/sidebar.action';
 
 @Component({
@@ -14,9 +14,11 @@ import * as SidebarActions from '../../../core/store/actions/sidebar.action';
 export class SidebarComponent implements OnInit {
   sidebarStructure$: Observable<Menu[]>;
   submenuVisible: { [key: string]: boolean } = {};
+  isExpanded$: Observable<boolean | false>;
   
   constructor(private store: Store<State<SidebarState>>) {
     this.sidebarStructure$ = store.select(selectCurrentStructure);
+    this.isExpanded$ = store.select(selectSidebarExpandState);
   }
   
   ngOnInit(): void {}

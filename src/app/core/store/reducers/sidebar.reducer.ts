@@ -4,11 +4,13 @@ import { Menu, SubMenu } from '../../../shared/models/menu.model';
 import * as SidebarActions from '../actions/sidebar.action';
 
 export interface SidebarState {
+  expanded: boolean;
   activeMenu: Menu;
   currentSidebarStructure: Menu[];
 }
 
 export const initialState: SidebarState = {
+  expanded: false,
   activeMenu: {
     id: 'side-bar-home-page',
     label: 'Home',
@@ -22,6 +24,10 @@ export const initialState: SidebarState = {
 
 export const sidebarReducer = createReducer(
   initialState,
+  on(SidebarActions.expandSidebar, (state) => ({
+    ...state,
+    expanded: true,
+  })),
   on(SidebarActions.updateSidebar, (state, { menu, submenu }) => ({
     ...state,
     currentSidebarStructure: updateMenus(
@@ -68,7 +74,7 @@ const compareMenus = (currentSidebar: Menu[]) => {
     return currentSidebar.find((menu) => menu.isExpanded) || currentSidebar[0];
 };
 
+export const expandedStatus = (state: SidebarState) => state.expanded;
 export const sidebarCurrentStructure = (state: SidebarState) =>
     state.currentSidebarStructure;
-
 export const activeMenu = (state: SidebarState) => state.activeMenu;

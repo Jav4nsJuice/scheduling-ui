@@ -7,6 +7,11 @@ export const selectSidebarState = createSelector(
   (selectSharedAppState) => selectSharedAppState.sidebar
 );
 
+export const selectSidebarExpandState = createSelector(
+  selectSidebarState,
+  fromSidebar.expandedStatus
+);
+
 export const selectActiveMenu = createSelector(
   selectSidebarState,
   fromSidebar.activeMenu
