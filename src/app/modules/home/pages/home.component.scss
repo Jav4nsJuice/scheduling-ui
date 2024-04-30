@@ -10,11 +10,12 @@
         padding: 0 2rem;
         height: 50%;
         width: calc(100% - 4rem);
+        flex-grow: 1;
     }
 
     &__top-section {
         padding: 0 2rem;
-        height: 50%;
+        height: auto;
         width: calc(100% - 4rem);
         display: flex;
         gap: 4rem;

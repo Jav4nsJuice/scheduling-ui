@@ -6,6 +6,7 @@
     padding: 2rem;
     display: flex;
     flex-direction: column;
+    background-color: $charcoal-200;
 }
 
 .top-courses-title {
@@ -22,7 +23,6 @@ p {
 
 .items-list{
     height: 100%;
-    background-color: $charcoal-200;
 }
 
 .items-list-container {
