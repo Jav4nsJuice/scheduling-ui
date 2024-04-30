@@ -7,7 +7,7 @@
     <div class="items-list">
         <ul class="items-list-container">
             <ng-container *ngIf="(studentCourses$ | async) as studentCourses">
-                <div class="font-size-08 item-information-container" *ngFor="let student of students$ | async">
+                <div class="font-size-08 item-information-container" *ngFor="let student of getTopStudents(students$ | async, studentCourses)">
                     <div>
                         {{ student.firstName }} {{ student.lastName}}
                     </div>

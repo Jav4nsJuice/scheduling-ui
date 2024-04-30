@@ -34,4 +34,12 @@ export class TopStudentsComponent implements OnInit {
     if (!studentCourses || !student) return 0;
     return studentCourses.filter(course => course.studentId === student.id).length;
   }
+
+  getTopStudents(students: Student[], studentCourses: StudentCourse[]): Student[] {
+    return students.slice(0).sort((a, b) => {
+      const courseCountA = this.getCourseCount(a, studentCourses);
+      const courseCountB = this.getCourseCount(b, studentCourses);
+      return courseCountB - courseCountA;
+    }).slice(0, 5);
+  }
 }
