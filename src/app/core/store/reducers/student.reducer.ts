@@ -5,13 +5,15 @@ import * as StudentAction from '../actions/student.action';
 export interface StudentsState {
   isLoading: boolean;
   students: Student[];
-  courses: StudentCourse[]
+  courses: StudentCourse[];
+  studentsInCourse: StudentCourse[];
 }
 
 export const initialState: StudentsState = {
   isLoading: false,
   students: [],
-  courses:[]
+  courses: [],
+  studentsInCourse: [],
 };
 
 export const studentReducer = createReducer(
@@ -34,7 +36,17 @@ export const studentReducer = createReducer(
     ...state,
     courses: action.courses
   })),
+  on(StudentAction.getCourseStudents, (state) => ({
+    ...state,
+    expanded: false,
+    isLoading: true
+  })),
+  on(StudentAction.getCourseStudentsSuccess, (state, action) => ({
+    ...state,
+    studentsInCourse: action.studentsInCourse
+  }))
 );
 
 export const getAllStudents = (state: StudentsState) => state.students;
 export const getStudentCourses = (state: StudentsState) => state.courses;
+export const getCourseStudents = (state: StudentsState) => state.studentsInCourse;

@@ -19,3 +19,13 @@ export const getStudentCoursesSuccess = createAction(
   '[Student Action] Get Student Courses Success',
   props<{ courses: StudentCourse[] }>()
 );
+
+export const getCourseStudents = createAction(
+  '[Student Action] Get Course Students',
+  props<{ courseId: string }>()
+);
+
+export const getCourseStudentsSuccess = createAction(
+  '[Student Action] Get Course Students Success',
+  props<{ studentsInCourse: StudentCourse[] }>()
+);

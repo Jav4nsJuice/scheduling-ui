@@ -19,4 +19,10 @@ export class StudentService {
         `${environment.S_API}/api/students/courses/student/${studentId}`
       );
   }
+
+  getCourseStudents(courseId: String): Observable<StudentCoursesResponse> {
+    return this.http.get<StudentCoursesResponse>(
+        `${environment.S_API}/api/students/courses/course/${courseId}`
+      );
+  }
 }
