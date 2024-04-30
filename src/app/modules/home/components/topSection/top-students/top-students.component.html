@@ -8,7 +8,7 @@
         <ul class="items-list-container">
             <div
                 class="font-size-08 item-information-container"
-                *ngFor="let student of students$ | async">
+                *ngFor="let student of topStudents$ | async">
                 <div>
                     {{ student.firstName }} {{ student.lastName}}
                 </div>
