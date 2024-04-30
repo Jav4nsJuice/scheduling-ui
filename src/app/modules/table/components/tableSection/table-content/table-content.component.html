@@ -30,13 +30,24 @@
     </table>
     <div class="filters-container">
         <div class="add-resource">
-            <span class="material-icons--18 outlined">
+            <span class="material-icons--18">
                 add
             </span>
             <p class="font-size-02">
                 Add Resource
             </p>
         </div>
+        <div class="step-search-section">
+            <span class="material-icons--18 button-icon">
+                search
+            </span>
+            <input 
+            type="search"
+            [(ngModel)]="searchContent"
+            class="tx-input-dialog"
+            placeholder="search"
+            />
+          </div>
         <mat-paginator 
         class="font-size-03"
         [pageSize]="pageSize"

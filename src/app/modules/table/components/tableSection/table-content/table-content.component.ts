@@ -41,6 +41,8 @@ export class TableContentComponent implements AfterViewInit {
   highValue: number = 10;
   resultsLength = 0;
 
+  searchContent: string = '';
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource = new MatTableDataSource<TableSource>();
 
