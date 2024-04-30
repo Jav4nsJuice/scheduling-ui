@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { State, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { getCourses } from 'src/app/core/store/actions/course.action';
@@ -9,33 +9,22 @@ import { selectAllCourses } from 'src/app/core/store/selectors/course.selector';
 import { selectAllStudentCourses, selectAllStudents } from 'src/app/core/store/selectors/student.selector';
 import { Course } from 'src/app/shared/models/course.model';
 import { Student, StudentCourse } from 'src/app/shared/models/student.model';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
-// export interface PeriodicElement {
-//   name: string;
-//   position: number;
-//   weight: number;
-//   symbol: string;
-// }
-
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-//   {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-//   {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-//   {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-//   {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-//   {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-//   {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-//   {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-//   {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-//   {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-// ];
+export interface TableSource { 
+  firstName: string,
+  lastName: string, 
+  title: string, 
+  description: string 
+};
 
 @Component({
   selector: 'app-table-content',
   templateUrl: './table-content.component.html',
   styleUrl: './table-content.component.scss'
 })
-export class TableContentComponent {
+export class TableContentComponent implements AfterViewInit {
   constructor(
     private store: Store<State<StudentsState>>,
     private storeCourse: Store<State<CoursesState>>
@@ -45,13 +34,17 @@ export class TableContentComponent {
   students$: Observable<Student[]> = this.store.select(selectAllStudents);
 
   courses$: Observable<Course[]> = this.storeCourse.select(selectAllCourses);
+  
+  hidePageSize = true;
+  pageSize = 10;
+  lowValue: number = 0;
+  highValue: number = 10;
+  resultsLength = 0;
 
-  dataSource: { 
-    firstName: string,
-    lastName: string, 
-    title: string, 
-    description: string 
-  }[] = [];
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  dataSource = new MatTableDataSource<TableSource>();
+
+  
 
   ngOnInit(): void {
     this.store.dispatch(getStudents());
@@ -61,7 +54,7 @@ export class TableContentComponent {
     this.studentCourses$.subscribe(studentCourses => {
       this.students$.subscribe(students => {
         this.courses$.subscribe(courses => {
-          this.dataSource = studentCourses.map(studentCourse => {
+          this.dataSource.data = studentCourses.map(studentCourse => {
             const student = students.find(student => student.id === studentCourse.studentId);
             const course = courses.find(course => course.id === studentCourse.courseId);
             return { 
@@ -74,6 +67,10 @@ export class TableContentComponent {
         });
       });
     });
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
   }
 
   displayedColumns: string[] = ['firstName', 'lastName', 'courseTitle', 'courseDescription'];

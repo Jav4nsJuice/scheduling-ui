@@ -2,6 +2,12 @@
 
 table {
     width: 100%;
+    flex-grow: 1;
+    box-shadow: 0;
+}
+
+mat-paginator {
+    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
 .color-column {
@@ -10,4 +16,13 @@ table {
 
 .color-item {
     color: $charcoal-900;
+}
+
+.table-page-container {
+    padding: 1rem;
+    height: calc(100% - 2rem);
+    width: calc(100% - 2rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
