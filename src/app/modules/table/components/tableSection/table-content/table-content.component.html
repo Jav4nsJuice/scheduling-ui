@@ -28,9 +28,20 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    <mat-paginator 
+    <div class="filters-container">
+        <div class="add-resource">
+            <span class="material-icons--18 outlined">
+                add
+            </span>
+            <p class="font-size-02">
+                Add Resource
+            </p>
+        </div>
+        <mat-paginator 
         class="font-size-03"
         [pageSize]="pageSize"
         [hidePageSize]="hidePageSize">
-    </mat-paginator>
+        </mat-paginator>
+    </div>
+    
 </div>
