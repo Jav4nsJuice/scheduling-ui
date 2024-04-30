@@ -4,8 +4,6 @@ import { EMPTY } from 'rxjs';
 import { map, exhaustMap, catchError } from 'rxjs/operators';
 import { StudentService } from '../../services/student.service';
 import {
-  getCourseStudents,
-  getCourseStudentsSuccess,
   getStudentCourses,
   getStudentCoursesSuccess,
   getStudents,
@@ -31,28 +29,10 @@ export class StudentEffects {
   loadStudentCourses$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getStudentCourses),
-      exhaustMap((action) =>
-        this.studentsService.getStudentCourses(action.studentId).pipe(
+      exhaustMap(() =>
+        this.studentsService.getAllStudentCourses().pipe(
           map((studentCourses) =>
-            getStudentCoursesSuccess({
-              courses: studentCourses.data,
-            })
-          ),
-          catchError(() => EMPTY)
-        )
-      )
-    )
-  );
-
-  loadCourseStudents$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(getCourseStudents),
-      exhaustMap((action) =>
-        this.studentsService.getCourseStudents(action.courseId).pipe(
-          map((courseStudents) =>
-            getCourseStudentsSuccess({
-              studentsInCourse: courseStudents.data,
-            })
+            getStudentCoursesSuccess({ studentCourses: studentCourses.data })
           ),
           catchError(() => EMPTY)
         )

@@ -14,15 +14,9 @@ export class StudentService {
     );
   }
 
-  getStudentCourses(studentId: String): Observable<StudentCoursesResponse> {
+  getAllStudentCourses(): Observable<StudentCoursesResponse> {
     return this.http.get<StudentCoursesResponse>(
-        `${environment.S_API}/api/students/courses/student/${studentId}`
-      );
-  }
-
-  getCourseStudents(courseId: String): Observable<StudentCoursesResponse> {
-    return this.http.get<StudentCoursesResponse>(
-        `${environment.S_API}/api/students/courses/course/${courseId}`
+        `${environment.S_API}/api/students/courses`
       );
   }
 }

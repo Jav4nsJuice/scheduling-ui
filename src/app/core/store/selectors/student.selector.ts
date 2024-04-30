@@ -12,12 +12,7 @@ export const selectAllStudents = createSelector(
   fromStudent.getAllStudents
 );
 
-export const selectMyStudentCourses = createSelector(
+export const selectAllStudentCourses = createSelector(
   selectStudentState,
-  fromStudent.getStudentCourses
-);
-
-export const selectMyCourseStudents = createSelector(
-  selectStudentState,
-  fromStudent.getCourseStudents
+  fromStudent.getAllStudentCourses
 );
