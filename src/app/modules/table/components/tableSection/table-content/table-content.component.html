@@ -37,22 +37,14 @@
                 Add Resource
             </p>
         </div>
-        <div class="step-search-section">
-            <span class="material-icons--18 button-icon">
-                search
-            </span>
-            <input 
-            type="search"
-            [(ngModel)]="searchContent"
-            class="tx-input-dialog"
-            placeholder="search"
-            />
-          </div>
+        <mat-form-field>
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+        </mat-form-field>
         <mat-paginator 
         class="font-size-03"
         [pageSize]="pageSize"
         [hidePageSize]="hidePageSize">
         </mat-paginator>
     </div>
-    
 </div>

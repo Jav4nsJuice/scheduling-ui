@@ -7,6 +7,8 @@ import { MatTableModule } from '@angular/material/table';
 import { TableContentComponent } from './components/tableSection/table-content/table-content.component'
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { FormsModule } from '@angular/forms';
     MatTableModule,
     MatPaginatorModule,
     FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
   ]
 })
 export class TableModule { }
