@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { State, Store } from '@ngrx/store';
+import { State, Store, select } from '@ngrx/store';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { Student, StudentCourse } from 'src/app/shared/models/student.model';
 import { StudentsState } from 'src/app/core/store/reducers/student.reducer';
 import { selectAllStudents } from 'src/app/core/store/selectors/student.selector';
@@ -9,8 +9,9 @@ import { getStudents } from 'src/app/core/store/actions/student.action';
 import { CoursesState } from 'src/app/core/store/reducers/course.reducer';
 import { Course } from 'src/app/shared/models/course.model';
 import { selectAllCourses } from 'src/app/core/store/selectors/course.selector';
-import { addStudentToCourse, getCourses } from 'src/app/core/store/actions/course.action';
+import { addStudentToCourse, addStudentToCourseFailure, getCourses } from 'src/app/core/store/actions/course.action';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-resource-dialog',
@@ -24,6 +25,7 @@ export class AddResourceDialogComponent implements OnInit {
     private store: Store<State<StudentsState>>,
     private storeCourse: Store<State<CoursesState>>,
     private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   students$: Observable<Student[]> = this.store.select(selectAllStudents);
@@ -35,7 +37,12 @@ export class AddResourceDialogComponent implements OnInit {
 
   addStudentToCourse(studentId: string, courseId: string): void {
     this.storeCourse.dispatch(addStudentToCourse({ studentId, courseId }));
-    this.dialogRef.close();
+  }
+
+  private showSnackbar(message: string): void {
+    this.snackBar.open(message, 'Close', {
+      duration: 2000,
+    });
   }
 
   ngOnInit(): void {

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { EMPTY } from 'rxjs';
+import { EMPTY, of } from 'rxjs';
 import { map, exhaustMap, catchError, switchMap } from 'rxjs/operators';
-import { addStudentToCourse, addStudentToCourseSuccess, getCourses, getCoursesSuccess } from '../actions/course.action';
+import { addStudentToCourse, addStudentToCourseFailure, addStudentToCourseSuccess, getCourses, getCoursesSuccess } from '../actions/course.action';
 import { CourseService } from '../../services/course.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class CourseEffects {
@@ -27,9 +28,13 @@ export class CourseEffects {
       switchMap((action) =>
         this.coursesService.addStudentToCourse(action.studentId, action.courseId).pipe(
           map((studentCourse) => {
+            this.showSnackbar('Student added to course successfully');
             return addStudentToCourseSuccess(studentCourse);
           }),
-          catchError(() => EMPTY)
+          catchError((error) => {
+            this.showSnackbar('Failed to add student to course');
+            return of(addStudentToCourseFailure());
+          })
         )
       )
     )
@@ -37,6 +42,17 @@ export class CourseEffects {
 
   constructor(
     private actions$: Actions,
-    private coursesService: CourseService
+    private coursesService: CourseService,
+    private snackBar: MatSnackBar
   ) {}
+
+  private showSnackbar(message: string): void {
+    this.snackBar.open(message, 'Close', {
+      duration: 2000,
+    });
+
+    setTimeout(() => {
+      location.reload();
+    }, 3000);
+  }
 }

@@ -21,6 +21,7 @@ import {
 import { AddResourceDialogComponent } from './components/tableSection/add-resource-dialog/add-resource-dialog.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatDialogClose,
     MatSelectModule,
     MatButtonModule,
+    MatSnackBarModule,
   ]
 })
 export class TableModule { }

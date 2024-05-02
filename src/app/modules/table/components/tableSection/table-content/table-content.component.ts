@@ -88,13 +88,17 @@ export class TableContentComponent implements AfterViewInit {
 
   displayedColumns: string[] = ['firstName', 'lastName', 'courseTitle', 'courseDescription'];
 
+  reloadWithRoute(route: string): void {
+    window.location.href = this.router.createUrlTree([route]).toString();
+  }
+
   openDialog(): void {
     const dialogRef = this.dialog.open(AddResourceDialogComponent, {
       data: { studentId: '', courseId: '' } 
     });
     
     dialogRef.afterClosed().subscribe(result => {
-      location.reload()
+      location.reload();
     });
   }
 }

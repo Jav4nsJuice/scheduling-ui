@@ -20,3 +20,7 @@ export const addStudentToCourseSuccess = createAction(
   '[Course Action] Add Student To Course Success',
   props<StudentCourseResponse>()
 );
+
+export const addStudentToCourseFailure = createAction(
+  '[Course Action] Add Student To Course Failure'
+);
