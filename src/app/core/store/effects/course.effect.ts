@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
-import { map, exhaustMap, catchError } from 'rxjs/operators';
-import { getCourses, getCoursesSuccess } from '../actions/course.action';
+import { map, exhaustMap, catchError, switchMap } from 'rxjs/operators';
+import { addStudentToCourse, addStudentToCourseSuccess, getCourses, getCoursesSuccess } from '../actions/course.action';
 import { CourseService } from '../../services/course.service';
 
 @Injectable()
@@ -15,6 +15,20 @@ export class CourseEffects {
           map((courses) =>
             getCoursesSuccess({ courses: courses.data })
           ),
+          catchError(() => EMPTY)
+        )
+      )
+    )
+  );
+
+  addStudentToCourse$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(addStudentToCourse),
+      switchMap((action) =>
+        this.coursesService.addStudentToCourse(action.studentId, action.courseId).pipe(
+          map((studentCourse) => {
+            return addStudentToCourseSuccess(studentCourse);
+          }),
           catchError(() => EMPTY)
         )
       )

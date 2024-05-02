@@ -13,7 +13,7 @@ type StudentCoursesResponse = {
 
 type StudentCourseResponse = {
   status: string;
-  data: StudentCourse[];
+  data: StudentCourse;
 };
 
 type CoursesResponse = {

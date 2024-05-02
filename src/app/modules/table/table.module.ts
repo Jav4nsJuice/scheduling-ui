@@ -9,11 +9,22 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import {
+  MatDialog,
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+  MatDialogTitle,
+  MatDialogContent,
+  MatDialogActions,
+  MatDialogClose,
+} from '@angular/material/dialog';
+import { AddResourceDialogComponent } from './components/tableSection/add-resource-dialog/add-resource-dialog.component'
 
 @NgModule({
   declarations: [
     TableComponent,
     TableContentComponent,
+    AddResourceDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -23,6 +34,10 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDialogTitle,
+    MatDialogContent,
+    MatDialogActions,
+    MatDialogClose,
   ]
 })
 export class TableModule { }
