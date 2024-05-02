@@ -29,7 +29,7 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
     <div class="filters-container">
-        <button class="add-resource">
+        <button class="add-resource" (click)="openDialog()">
             <span class="material-icons--18">
                 add
             </span>
