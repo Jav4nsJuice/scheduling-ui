@@ -7,7 +7,15 @@
       <mat-option *ngFor="let student of students$ | async" [value]="student.id" class="font-size-04">{{student.firstName}} {{student.lastName}}</mat-option>
     </mat-select>
   </mat-form-field>
-
+</mat-dialog-content>
+<mat-dialog-content>
+  <p class="font-size-04">Select Course</p>
+  <mat-form-field>
+    <mat-label class="font-size-04">Course</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let course of courses$ | async" [value]="course.id" class="font-size-04">{{course.title}}</mat-option>
+    </mat-select>
+  </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>
