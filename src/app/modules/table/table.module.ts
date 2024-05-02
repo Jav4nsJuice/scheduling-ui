@@ -18,7 +18,8 @@ import {
   MatDialogActions,
   MatDialogClose,
 } from '@angular/material/dialog';
-import { AddResourceDialogComponent } from './components/tableSection/add-resource-dialog/add-resource-dialog.component'
+import { AddResourceDialogComponent } from './components/tableSection/add-resource-dialog/add-resource-dialog.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AddResourceDialogComponent } from './components/tableSection/add-resour
     MatDialogContent,
     MatDialogActions,
     MatDialogClose,
+    MatSelectModule,
   ]
 })
 export class TableModule { }
