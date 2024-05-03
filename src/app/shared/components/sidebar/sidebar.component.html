@@ -4,7 +4,7 @@
             <div ngClass="sidebar__items">
                 <div *ngFor="let menu of sidebarStructure$ | async" ngClass="sidebar__item">
                     <a mat-list-item
-                        ngClass="menu__item--active"
+                        [ngClass]="{'menu__item--active': menu.isExpanded}"
                         (click)="updateSidebar(menu)"
                         [routerLink]="menu.path"
                         (mouseenter)="showSubmenu(menu)"
@@ -43,4 +43,7 @@
             </div>
         </mat-nav-list>
     </mat-drawer>
+    <div ngClass="sidebar__content">
+      <router-outlet></router-outlet>
+    </div>
 </mat-drawer-container>

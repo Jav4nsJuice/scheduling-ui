@@ -1,0 +1,43 @@
+@import '../../../../../../assets/scss/variables.scss';
+
+.top-courses-container {
+    width: calc(100% - 4rem);
+    height: calc(100% - 4rem);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    background-color: $charcoal-200;
+}
+
+.top-courses-title {
+    width: 100%;
+    height: 5rem;
+    color: $primary-900;
+    background-color: $charcoal-400;
+    text-align: center;
+}
+
+p {
+    margin: 0;
+}
+
+.items-list{
+    height: 100%;
+}
+
+.items-list-container {
+    padding: 0 1rem;
+    margin: 3rem 0 0 0;
+}
+
+.item-information-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.counter-color {
+    color: $primary-900;
+    min-width: 2.5rem;
+    text-align: center;
+}

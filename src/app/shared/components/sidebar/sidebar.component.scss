@@ -11,11 +11,10 @@
 
 .sidebar__item {
     &:hover .submenu--hover {
-      background-color: $primary-400;
+      background-color: $primary-800;
       color: $charcoal-50 !important;
     }
     color: $charcoal-50;
-    height: 6rem;
 }
 
 .mat-mdc-list-base {
@@ -26,16 +25,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+}
 
-  .mat-mdc-list-item {
+.mat-mdc-list-item {
   height: 5.5rem !important;
   background-color: $primary-800;
   font-weight: 700;
   font-size: 1rem;
 
   &.menu__item--active {
-    background-color: $primary-800;
+    background-color: $primary-400;
     color: $charcoal-50;
   }
 

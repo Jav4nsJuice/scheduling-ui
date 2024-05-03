@@ -1,0 +1,21 @@
+<div class="top-students-container">
+    <div class="top-students-title">
+        <p class="font-size-10">
+            TOP STUDENTS
+        </p>
+    </div>
+    <div class="items-list">
+        <ul class="items-list-container">
+            <ng-container *ngIf="(studentCourses$ | async) as studentCourses">
+                <div class="font-size-08 item-information-container" *ngFor="let student of getTopStudents(students$ | async, studentCourses)">
+                    <div>
+                        {{ student.firstName }} {{ student.lastName}}
+                    </div>
+                    <p class="font-size-07 counter-color">
+                        {{ getCourseCount(student, studentCourses) }}
+                    </p>
+                </div>
+            </ng-container>
+        </ul>
+    </div>
+</div>

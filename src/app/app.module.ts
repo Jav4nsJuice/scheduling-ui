@@ -16,7 +16,10 @@ import { MatListModule } from '@angular/material/list';
 
 import { SchedulingStateModule } from './core/store/state/app.state';
 import { StoreModule } from '@ngrx/store';
-import { routerReducer } from '@ngrx/router-store';
+import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
+import { RouterSerializer } from './core/store/state/routerSerializer';
+import { EffectsModule } from '@ngrx/effects';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,11 @@ import { routerReducer } from '@ngrx/router-store';
     StoreModule.forRoot({
       router: routerReducer,
     }),
+    StoreRouterConnectingModule.forRoot({
+      serializer: RouterSerializer,
+    }),
+    EffectsModule.forRoot([]),
+    HttpClientModule,
   ],
   bootstrap: [AppComponent],
 })

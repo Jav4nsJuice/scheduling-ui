@@ -1,0 +1,39 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: hidden;
+    row-gap: 4rem;
+
+    &__slider-section {
+        margin-top: 4rem;
+        padding: 0 2rem;
+        height: 50%;
+        width: calc(100% - 4rem);
+        flex-grow: 1;
+    }
+
+    &__top-section {
+        padding: 0 2rem;
+        height: auto;
+        width: calc(100% - 4rem);
+        display: flex;
+        gap: 4rem;
+    }
+}
+
+.slider-section {
+    margin-bottom: 4rem;
+    padding: 1rem 3rem 0rem 3rem;
+    height: calc(100% - 1rem);
+}
+
+.top-students-section {
+    width: calc(50% - 8rem);
+    padding: 1rem 0 1rem 8rem;
+}
+
+.top-courses-section {
+    width: calc(50% - 8rem);
+    padding: 1rem 8rem 1rem 0;
+}
