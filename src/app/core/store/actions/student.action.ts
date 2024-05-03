@@ -24,6 +24,10 @@ export const addStudent = createAction(
   props<{ student: Student }>()
 );
 
+export const addStudentFailure = createAction(
+  '[Student Action] Add Student Failure'
+);
+
 export const updateStudent = createAction(
   '[Student Action] Update Student',
   props<{ id: string, updates: Partial<Student> }>()
