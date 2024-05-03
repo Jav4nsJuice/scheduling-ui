@@ -21,12 +21,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
+import { EditStudentDialogComponent } from './components/edit-student-dialog/edit-student-dialog.component';
 
 @NgModule({
   declarations: [
     StudentsComponent,
     StudentsContentComponent,
     CreateStudentDialogComponent,
+    EditStudentDialogComponent,
   ],
   imports: [
     CommonModule,
