@@ -1,27 +1,82 @@
-# SchedulingUi
+# Scheduling UI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.3.
+## Getting Started
 
-## Development server
+These instructions will get you a copy of the project up and running on your local machine.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Prerequisites
 
-## Code scaffolding
+- ### For MacOS Users
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+First we will download [Homebrew](https://docs.brew.sh/Installation).
+Homebrew installatoin verification:
 
-## Build
+```sh
+$ brew -v
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Then, we will download nvm using homebrew:
 
-## Running unit tests
+```sh
+$ brew install nvm
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Installation verification:
 
-## Running end-to-end tests
+```sh
+$ nvm version
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Your terminal will show None if your installation is ok.
 
-## Further help
+**Node.js v18.18.0+**, **npm 9.8.1+** and **Angular/Cli v17.2.3** . NPM comes in bundle with Node.js
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Use nvm to install Node.js and Angular/Cli version.
+
+```sh
+$ nvm install 18.18.0
+```
+
+Installation verification:
+
+```sh
+$ nvm use 18.18.0
+$ node --version
+$ npm --version
+```
+
+Angular v17.2.3 installation
+
+```sh
+$ npm install -g @angular/cli@17.2.3
+```
+
+Installation verification:
+
+```sh
+$ ng version
+```
+
+### Packages
+
+Download the True Rewards project from GitLab and install the necessary dependencies by running:
+
+```sh
+$ git clone https://github.com/Jav4nsJuice/scheduling-ui.git
+$ cd scheduling-ui
+$ git checkout develop
+$ nvm use 18.18.0
+$ npm install
+```
+
+### Run the project
+
+- **For develop environments**, start the server by running:
+
+```sh
+$ nvm use 18.18.0
+$ npm start
+```
+
+The Project runs by default in port: 3005
+To view web page: http://localhost:3005/tx-scheduling/
