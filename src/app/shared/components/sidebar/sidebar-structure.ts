@@ -18,25 +18,12 @@ export const sidebarStructure = [
           submenus: [],
         },
         {
-          id: 'side-bar-create',
-          label: 'create-pages',
-          path: null,
-          icon: 'add',
+          id: 'side-bar-students-page',
+          label: 'Students',
+          path: '/students',
+          icon: 'person',
           isExpanded: false,
-          submenus: [
-            {
-              id: 'create-student',
-              label: 'Create Student',
-              path: '/create/student',
-              isActive: false
-            },
-            {
-              id: 'create-course',
-              label: 'Create Course',
-              path: '/create/course',
-              isActive: false
-            }
-          ],
+          submenus: [],
         }
       ],
     }
