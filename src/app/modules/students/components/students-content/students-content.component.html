@@ -17,7 +17,7 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
     <div class="filters-container">
-        <button class="button" (click)="openDialog()">
+        <button class="button" (click)="openCreateStudentDialog()">
             <span class="material-icons--18">
                 person_add
             </span>
@@ -25,7 +25,7 @@
                 Add Student
             </p>
         </button>
-        <button class="button" (click)="openDialog()">
+        <button class="button">
             <span class="material-icons--18">
                 edit
             </span>
@@ -33,7 +33,7 @@
                 Edit Student
             </p>
         </button>
-        <button class="button" (click)="openDialog()">
+        <button class="button">
             <span class="material-icons--18">
                 person_remove
             </span>
