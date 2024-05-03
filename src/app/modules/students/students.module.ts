@@ -22,6 +22,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
 import { EditStudentDialogComponent } from './components/edit-student-dialog/edit-student-dialog.component';
+import { DeleteStudentDialogComponent } from './components/delete-student-dialog/delete-student-dialog.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { EditStudentDialogComponent } from './components/edit-student-dialog/edi
     StudentsContentComponent,
     CreateStudentDialogComponent,
     EditStudentDialogComponent,
+    DeleteStudentDialogComponent,
   ],
   imports: [
     CommonModule,

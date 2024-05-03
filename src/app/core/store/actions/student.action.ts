@@ -41,3 +41,8 @@ export const deleteStudent = createAction(
   '[Student Action] Delete Student',
   props<{ id: string }>()
 );
+
+export const deleteStudentFailure = createAction(
+  '[Student Action] Delete Student Failure',
+  props<{ id: string }>()
+);

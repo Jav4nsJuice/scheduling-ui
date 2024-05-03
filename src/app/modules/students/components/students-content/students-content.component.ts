@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { StudentsState } from 'src/app/core/store/reducers/student.reducer';
 import { CreateStudentDialogComponent } from '../create-student-dialog/create-student-dialog.component';
 import { EditStudentDialogComponent } from '../edit-student-dialog/edit-student-dialog.component';
+import { DeleteStudentDialogComponent } from '../delete-student-dialog/delete-student-dialog.component';
 
 @Component({
   selector: 'app-students-content',
@@ -52,6 +53,16 @@ export class StudentsContentComponent {
   openEditStudentDialog(): void {
     const dialogRef = this.dialog.open(EditStudentDialogComponent, {
       data: { firstName: '', lastName: '' } 
+    });
+    
+    dialogRef.afterClosed().subscribe(result => {
+      location.reload();
+    });
+  }
+
+  openDeleteStudentDialog(): void {
+    const dialogRef = this.dialog.open(DeleteStudentDialogComponent, {
+      data: { id: '' } 
     });
     
     dialogRef.afterClosed().subscribe(result => {

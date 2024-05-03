@@ -7,6 +7,7 @@ import {
   addStudent,
   addStudentFailure,
   deleteStudent,
+  deleteStudentFailure,
   getStudentCourses,
   getStudentCoursesSuccess,
   getStudents,
@@ -87,8 +88,14 @@ export class StudentEffects {
       ofType(deleteStudent),
       exhaustMap(({ id }) =>
         this.studentsService.deleteStudent(id).pipe(
-          map(() => getStudents()),
-          catchError(() => EMPTY)
+          mergeMap(() => {
+            this.showSnackbar('Student deleted successfully!');
+            return [getStudents()];
+          }),
+          catchError((error) => {
+            this.showSnackbar('Failed to delete student');
+            return of(deleteStudentFailure({ id }));
+          })
         )
       )
     )
