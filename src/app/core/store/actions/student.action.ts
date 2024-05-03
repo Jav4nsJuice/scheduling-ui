@@ -33,6 +33,10 @@ export const updateStudent = createAction(
   props<{ id: string, updates: Partial<Student> }>()
 );
 
+export const updateStudentFailure = createAction(
+  '[Student Action] Update Student Failure'
+);
+
 export const deleteStudent = createAction(
   '[Student Action] Delete Student',
   props<{ id: string }>()

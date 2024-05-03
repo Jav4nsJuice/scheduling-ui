@@ -8,6 +8,7 @@ import { Student } from 'src/app/shared/models/student.model';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentsState } from 'src/app/core/store/reducers/student.reducer';
 import { CreateStudentDialogComponent } from '../create-student-dialog/create-student-dialog.component';
+import { EditStudentDialogComponent } from '../edit-student-dialog/edit-student-dialog.component';
 
 @Component({
   selector: 'app-students-content',
@@ -40,6 +41,16 @@ export class StudentsContentComponent {
 
   openCreateStudentDialog(): void {
     const dialogRef = this.dialog.open(CreateStudentDialogComponent, {
+      data: { firstName: '', lastName: '' } 
+    });
+    
+    dialogRef.afterClosed().subscribe(result => {
+      location.reload();
+    });
+  }
+
+  openEditStudentDialog(): void {
+    const dialogRef = this.dialog.open(EditStudentDialogComponent, {
       data: { firstName: '', lastName: '' } 
     });
     
