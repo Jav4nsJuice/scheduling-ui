@@ -19,10 +19,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
+import { CoursesContentComponent } from './components/courses-content/courses-content.component'
 
 @NgModule({
   declarations: [
     CoursesComponent,
+    CoursesContentComponent,
   ],
   imports: [
     CommonModule,
