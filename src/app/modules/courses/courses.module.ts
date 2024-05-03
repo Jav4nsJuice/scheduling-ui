@@ -19,12 +19,18 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
-import { CoursesContentComponent } from './components/courses-content/courses-content.component'
+import { CoursesContentComponent } from './components/courses-content/courses-content.component';
+import { CreateCourseDialogComponent } from './components/create-course-dialog/create-course-dialog.component';
+import { EditCourseDialogComponent } from './components/edit-course-dialog/edit-course-dialog.component';
+import { DeleteCourseDialogComponent } from './components/delete-course-dialog/delete-course-dialog.component';
 
 @NgModule({
   declarations: [
     CoursesComponent,
     CoursesContentComponent,
+    CreateCourseDialogComponent,
+    EditCourseDialogComponent,
+    DeleteCourseDialogComponent,
   ],
   imports: [
     CommonModule,
