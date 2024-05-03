@@ -30,6 +30,18 @@ export const courseReducer = createReducer(
   on(CourseAction.addStudentToCourseSuccess, (state) => ({
     ...state,
     isLoading: false,
+  })),
+  on(CourseAction.addCourse, (state) => ({
+    ...state,
+    isLoading: true
+  })),
+  on(CourseAction.updateCourse, (state) => ({
+    ...state,
+    isLoading: true
+  })),
+  on(CourseAction.deleteCourse, (state) => ({
+    ...state,
+    isLoading: true
   }))
 );
 

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY, of } from 'rxjs';
-import { map, exhaustMap, catchError, switchMap } from 'rxjs/operators';
-import { addStudentToCourse, addStudentToCourseFailure, addStudentToCourseSuccess, getCourses, getCoursesSuccess } from '../actions/course.action';
+import { map, exhaustMap, catchError, switchMap, mergeMap } from 'rxjs/operators';
+import { addCourse, addCourseFailure, addStudentToCourse, addStudentToCourseFailure, addStudentToCourseSuccess, deleteCourse, deleteCourseFailure, getCourses, getCoursesSuccess, updateCourse, updateCourseFailure } from '../actions/course.action';
 import { CourseService } from '../../services/course.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -34,6 +34,60 @@ export class CourseEffects {
           catchError((error) => {
             this.showSnackbar('Failed to add student to course');
             return of(addStudentToCourseFailure());
+          })
+        )
+      )
+    )
+  );
+
+  addCourse$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(addCourse),
+      exhaustMap(({ course }) =>
+        this.coursesService.addCourse(course).pipe(
+          map(() => {
+            this.showSnackbar('Course created successfully!');
+            return getCourses();
+          }),
+          catchError((error) => {
+            this.showSnackbar('Failed to create course');
+            return of(addCourseFailure());
+          })
+        )
+      )
+    )
+  );
+
+  updateCourse$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(updateCourse),
+      exhaustMap(({ id, updates }) =>
+        this.coursesService.updateCourse(id, updates).pipe(
+          mergeMap(() => {
+            this.showSnackbar('Course updated successfully!');
+            return [getCourses()];
+          }),
+          catchError((error) => {
+            this.showSnackbar('Failed to update course');
+            return of(updateCourseFailure());
+          })
+        )
+      )
+    )
+  );
+
+  deleteCourse$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(deleteCourse),
+      exhaustMap(({ id }) =>
+        this.coursesService.deleteCourse(id).pipe(
+          mergeMap(() => {
+            this.showSnackbar('Course deleted successfully!');
+            return [getCourses()];
+          }),
+          catchError((error) => {
+            this.showSnackbar('Failed to delete course');
+            return of(deleteCourseFailure({ id }));
           })
         )
       )

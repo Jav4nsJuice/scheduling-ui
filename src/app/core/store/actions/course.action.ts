@@ -24,3 +24,31 @@ export const addStudentToCourseSuccess = createAction(
 export const addStudentToCourseFailure = createAction(
   '[Course Action] Add Student To Course Failure'
 );
+
+export const addCourse = createAction(
+  '[Course Action] Add Course',
+  props<{ course: Course }>()
+);
+
+export const addCourseFailure = createAction(
+  '[Course Action] Add Course Failure'
+);
+
+export const updateCourse = createAction(
+  '[Course Action] Update Course',
+  props<{ id: string, updates: Partial<Course> }>()
+);
+
+export const updateCourseFailure = createAction(
+  '[Course Action] Update Course Failure'
+);
+
+export const deleteCourse = createAction(
+  '[Course Action] Delete Course',
+  props<{ id: string }>()
+);
+
+export const deleteCourseFailure = createAction(
+  '[Course Action] Delete Course Failure',
+  props<{ id: string }>()
+);
