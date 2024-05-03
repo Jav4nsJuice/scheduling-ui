@@ -18,3 +18,18 @@ export const getStudentCoursesSuccess = createAction(
   '[Student Action] Get Student Courses Success',
   props<{ studentCourses: StudentCourse[] }>()
 );
+
+export const addStudent = createAction(
+  '[Student Action] Add Student',
+  props<{ student: Student }>()
+);
+
+export const updateStudent = createAction(
+  '[Student Action] Update Student',
+  props<{ id: string, updates: Partial<Student> }>()
+);
+
+export const deleteStudent = createAction(
+  '[Student Action] Delete Student',
+  props<{ id: string }>()
+);
