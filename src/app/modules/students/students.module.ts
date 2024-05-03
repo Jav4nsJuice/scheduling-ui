@@ -7,11 +7,13 @@ import { StudentsContentComponent } from './components/students-content/students
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
+import { CreateStudentDialogComponent } from './components/create-student-dialog/create-student-dialog.component'
 
 @NgModule({
   declarations: [
     StudentsComponent,
-    StudentsContentComponent
+    StudentsContentComponent,
+    CreateStudentDialogComponent,
   ],
   imports: [
     CommonModule,
