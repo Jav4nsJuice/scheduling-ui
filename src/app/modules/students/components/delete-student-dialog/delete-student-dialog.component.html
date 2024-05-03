@@ -1,1 +1,13 @@
-<p>delete-student-dialog works!</p>
+<h2 mat-dialog-title class="font-size-08">Delete Student</h2>
+<div class="dialog-full-width">
+    <mat-form-field class="full-width">
+        <mat-label class="font-size-04">Choose Student</mat-label>
+        <mat-select [(ngModel)]="data.id">
+          <mat-option *ngFor="let student of students$ | async" [value]="student.id" class="font-size-04">{{student.firstName}} {{student.lastName}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<mat-dialog-actions>
+  <button mat-button (click)="deleteStudent(data.id)" cdkFocusInitial>OK</button>
+  <button mat-button (click)="onNoClick()">CANCEL</button>
+</mat-dialog-actions>
