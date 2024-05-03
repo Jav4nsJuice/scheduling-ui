@@ -1,0 +1,46 @@
+<mat-drawer-container autosize [hasBackdrop]="false" class="sidebar">
+    <mat-drawer #drawer mode="side" disableClose="true" opened="true" ngClass="sidebar__close">
+        <mat-nav-list>
+            <div ngClass="sidebar__items">
+                <div *ngFor="let menu of sidebarStructure$ | async" ngClass="sidebar__item">
+                    <a mat-list-item
+                        ngClass="menu__item--active"
+                        (click)="updateSidebar(menu)"
+                        [routerLink]="menu.path"
+                        (mouseenter)="showSubmenu(menu)"
+                        (mouseleave)="hideSubmenu(menu)">
+                        <div class="sidebar-item-container">
+                            <span class="material-icons--18 outlined">{{ menu.icon }}</span>
+                        </div>
+                    </a>
+                    <div [ngClass]="{
+                        'submenu--hover': submenuVisible[menu.label],
+                        'submenu--list': (menu.isExpanded ),
+                        'submenu': true}">
+                        <ng-container *ngFor="let submenu of menu.submenus">
+                            <a
+                              mat-list-item
+                              [ngClass]="{
+                                'menu__item--selected' : submenu.isActive,
+                                'menu__item--active' : menu.isExpanded,
+                              }"
+                              [routerLink]="submenu.path"
+                              (click)="updateSidebar(menu, submenu)"
+                            >
+                              <div
+                                [ngClass]="{
+                                  'font-size-02': true,
+                                  'sidebar__label' : true,
+                                  'sidebar__label--expanded' : menu.isExpanded
+                                }"
+                              >
+                                {{ submenu.label }}
+                              </div>
+                            </a>
+                          </ng-container>
+                    </div>
+                </div>
+            </div>
+        </mat-nav-list>
+    </mat-drawer>
+</mat-drawer-container>
