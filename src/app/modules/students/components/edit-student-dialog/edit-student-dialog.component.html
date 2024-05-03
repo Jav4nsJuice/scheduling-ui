@@ -1,1 +1,21 @@
-<p>edit-student-dialog works!</p>
+<h2 mat-dialog-title class="font-size-08">Edit Student</h2>
+<div class="dialog-full-width">
+    <mat-form-field class="full-width">
+        <mat-label class="font-size-04">Choose Student</mat-label>
+        <mat-select [(ngModel)]="data.id">
+          <mat-option *ngFor="let student of students$ | async" [value]="student.id" class="font-size-04">{{student.firstName}} {{student.lastName}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <mat-label>First name</mat-label>
+        <input matInput [(ngModel)]="data.firstName">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <mat-label>Last Name</mat-label>
+        <input matInput [(ngModel)]="data.lastName">
+    </mat-form-field>
+</div>
+<mat-dialog-actions>
+  <button mat-button (click)="updateStudent(data.id, data)" cdkFocusInitial>OK</button>
+  <button mat-button (click)="onNoClick()">CANCEL</button>
+</mat-dialog-actions>
