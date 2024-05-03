@@ -11,6 +11,9 @@ import { Course } from 'src/app/shared/models/course.model';
 import { Student, StudentCourse } from 'src/app/shared/models/student.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { AddResourceDialogComponent } from '../add-resource-dialog/add-resource-dialog.component';
+import { Router } from '@angular/router';
 
 export interface TableSource { 
   firstName: string,
@@ -27,12 +30,13 @@ export interface TableSource {
 export class TableContentComponent implements AfterViewInit {
   constructor(
     private store: Store<State<StudentsState>>,
-    private storeCourse: Store<State<CoursesState>>
+    private storeCourse: Store<State<CoursesState>>,
+    public dialog: MatDialog,
+    private router: Router,
   ) {}
 
   studentCourses$: Observable<StudentCourse[]> = this.store.select(selectAllStudentCourses);
   students$: Observable<Student[]> = this.store.select(selectAllStudents);
-
   courses$: Observable<Course[]> = this.storeCourse.select(selectAllCourses);
   
   hidePageSize = true;
@@ -40,8 +44,6 @@ export class TableContentComponent implements AfterViewInit {
   lowValue: number = 0;
   highValue: number = 10;
   resultsLength = 0;
-
-  searchContent: string = '';
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource = new MatTableDataSource<TableSource>();
@@ -85,4 +87,18 @@ export class TableContentComponent implements AfterViewInit {
   }
 
   displayedColumns: string[] = ['firstName', 'lastName', 'courseTitle', 'courseDescription'];
+
+  reloadWithRoute(route: string): void {
+    window.location.href = this.router.createUrlTree([route]).toString();
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AddResourceDialogComponent, {
+      data: { studentId: '', courseId: '' } 
+    });
+    
+    dialogRef.afterClosed().subscribe(result => {
+      location.reload();
+    });
+  }
 }

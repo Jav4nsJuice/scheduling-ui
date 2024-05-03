@@ -1,0 +1,23 @@
+<h2 mat-dialog-title class="font-size-08">Add Resource</h2>
+<mat-dialog-content>
+  <p class="font-size-04">Select Student</p>
+  <mat-form-field>
+    <mat-label class="font-size-04">Student</mat-label>
+    <mat-select [(ngModel)]="data.studentId">
+      <mat-option *ngFor="let student of students$ | async" [value]="student.id" class="font-size-04">{{student.firstName}} {{student.lastName}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-content>
+  <p class="font-size-04">Select Course</p>
+  <mat-form-field>
+    <mat-label class="font-size-04">Course</mat-label>
+    <mat-select [(ngModel)]="data.courseId">
+      <mat-option *ngFor="let course of courses$ | async" [value]="course.id" class="font-size-04">{{course.title}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="addStudentToCourse(data.studentId, data.courseId)" cdkFocusInitial>OK</button>
+  <button mat-button (click)="onNoClick()">CANCEL</button>
+</mat-dialog-actions>

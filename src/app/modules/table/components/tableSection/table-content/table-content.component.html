@@ -29,14 +29,14 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
     <div class="filters-container">
-        <div class="add-resource">
+        <button class="add-resource" (click)="openDialog()">
             <span class="material-icons--18">
                 add
             </span>
             <p class="font-size-02">
                 Add Resource
             </p>
-        </div>
+        </button>
         <mat-form-field>
             <mat-label>Filter</mat-label>
             <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>

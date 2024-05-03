@@ -22,6 +22,14 @@ export const courseReducer = createReducer(
   on(CourseAction.getCoursesSuccess, (state, action) => ({
     ...state,
     courses: action.courses
+  })),
+  on(CourseAction.addStudentToCourse, (state) => ({
+    ...state,
+    isLoading: true,
+  })),
+  on(CourseAction.addStudentToCourseSuccess, (state) => ({
+    ...state,
+    isLoading: false,
   }))
 );
 
