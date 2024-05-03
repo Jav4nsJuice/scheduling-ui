@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY, of } from 'rxjs';
-import { map, exhaustMap, catchError } from 'rxjs/operators';
+import { map, exhaustMap, catchError, mergeMap } from 'rxjs/operators';
 import { StudentService } from '../../services/student.service';
 import {
   addStudent,
@@ -12,6 +12,7 @@ import {
   getStudents,
   getStudentsSuccess,
   updateStudent,
+  updateStudentFailure,
 } from '../actions/student.action';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -68,8 +69,14 @@ export class StudentEffects {
       ofType(updateStudent),
       exhaustMap(({ id, updates }) =>
         this.studentsService.updateStudent(id, updates).pipe(
-          map(() => getStudents()),
-          catchError(() => EMPTY)
+          mergeMap(() => {
+            this.showSnackbar('Student updated successfully!');
+            return [getStudents()];
+          }),
+          catchError((error) => {
+            this.showSnackbar('Failed to update student');
+            return of(updateStudentFailure());
+          })
         )
       )
     )
