@@ -1,0 +1,15 @@
+<h2 mat-dialog-title class="font-size-08">Create Course</h2>
+<div class="dialog-full-width">
+    <mat-form-field class="full-width">
+        <mat-label>Table</mat-label>
+        <input matInput [(ngModel)]="data.title">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <mat-label>Description</mat-label>
+        <input matInput [(ngModel)]="data.description">
+    </mat-form-field>
+</div>
+<mat-dialog-actions>
+  <button mat-button (click)="createCourse()" cdkFocusInitial>OK</button>
+  <button mat-button (click)="onNoClick()">CANCEL</button>
+</mat-dialog-actions>

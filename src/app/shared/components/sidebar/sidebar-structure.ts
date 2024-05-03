@@ -24,6 +24,14 @@ export const sidebarStructure = [
           icon: 'person',
           isExpanded: false,
           submenus: [],
+        },
+        {
+          id: 'side-bar-courses-page',
+          label: 'Courses',
+          path: '/courses',
+          icon: 'school',
+          isExpanded: false,
+          submenus: [],
         }
       ],
     }

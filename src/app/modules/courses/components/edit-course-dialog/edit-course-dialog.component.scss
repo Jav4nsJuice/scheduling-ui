@@ -1,0 +1,30 @@
+.dialog-full-width {
+    width: 50rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.mdc-dialog__title {
+    font-family: "Work Sans";
+    font-size: 20px;
+    line-height: 22px;
+}
+
+.mat-mdc-option{
+    margin-left: 1rem;
+    font-family: "Work Sans";
+    font-size: 16px;
+    line-height: 18px;
+}
+
+.mat-mdc-select{
+    font-family: "Work Sans";
+    font-size: 16px;
+    line-height: 18px;
+}
