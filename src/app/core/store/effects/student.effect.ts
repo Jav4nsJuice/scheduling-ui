@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { EMPTY } from 'rxjs';
+import { EMPTY, of } from 'rxjs';
 import { map, exhaustMap, catchError } from 'rxjs/operators';
 import { StudentService } from '../../services/student.service';
 import {
   addStudent,
+  addStudentFailure,
   deleteStudent,
   getStudentCourses,
   getStudentCoursesSuccess,
@@ -12,6 +13,7 @@ import {
   getStudentsSuccess,
   updateStudent,
 } from '../actions/student.action';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class StudentEffects {
@@ -48,8 +50,14 @@ export class StudentEffects {
       ofType(addStudent),
       exhaustMap(({ student }) =>
         this.studentsService.addStudent(student).pipe(
-          map(() => getStudents()),
-          catchError(() => EMPTY)
+          map(() => {
+            this.showSnackbar('Student created successfully!');
+            return getStudents();
+          }),
+          catchError((error) => {
+            this.showSnackbar('Failed to create student');
+            return of(addStudentFailure());
+          })
         )
       )
     )
@@ -60,7 +68,7 @@ export class StudentEffects {
       ofType(updateStudent),
       exhaustMap(({ id, updates }) =>
         this.studentsService.updateStudent(id, updates).pipe(
-          map(() => getStudents()), // Dispatch action to refresh the list after updating
+          map(() => getStudents()),
           catchError(() => EMPTY)
         )
       )
@@ -72,7 +80,7 @@ export class StudentEffects {
       ofType(deleteStudent),
       exhaustMap(({ id }) =>
         this.studentsService.deleteStudent(id).pipe(
-          map(() => getStudents()), // Dispatch action to refresh the list after deleting
+          map(() => getStudents()),
           catchError(() => EMPTY)
         )
       )
@@ -81,6 +89,17 @@ export class StudentEffects {
 
   constructor(
     private actions$: Actions,
-    private studentsService: StudentService
+    private studentsService: StudentService,
+    private snackBar: MatSnackBar
   ) {}
+
+  private showSnackbar(message: string): void {
+    this.snackBar.open(message, 'Close', {
+      duration: 2000,
+    });
+
+    setTimeout(() => {
+      location.reload();
+    }, 3000);
+  }
 }

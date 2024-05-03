@@ -20,8 +20,6 @@ export class CreateStudentDialogComponent implements OnInit {
     private store: Store<State<StudentsState>>,
   ) {}
 
-  @Input() control:FormControl;
-
   ngOnInit(): void {}
 
   onNoClick(): void {
@@ -29,9 +27,6 @@ export class CreateStudentDialogComponent implements OnInit {
   }
 
   createStudent(): void {
-    console.log(this.data.id);
-    console.log(this.data.firstName);
-    console.log(this.data.lastName);
     this.store.dispatch(addStudent({ student: this.data }));
   }
 }
