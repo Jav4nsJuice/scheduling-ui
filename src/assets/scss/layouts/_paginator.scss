@@ -1,0 +1,10 @@
+@import '../variables.scss';
+
+.mat-mdc-icon-button {
+  &:hover {
+      background-color: $primary-900;
+      .mat-mdc-paginator-icon {
+          fill: $charcoal-50;
+      }
+    }
+}
